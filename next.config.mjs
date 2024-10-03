@@ -10,6 +10,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "raw.githubusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "img.pokemondb.net",
+      },
+      {
+        protocol: "https",
+        hostname: "upload.wikimedia.org",
+      }
     ],
   },
 };

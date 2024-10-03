@@ -17,6 +17,9 @@ export default function Home() {
           <li className="mb-2">
             Counter
           </li>
+          <li className="mb-2">
+            Pokemons
+          </li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">

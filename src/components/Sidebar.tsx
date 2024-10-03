@@ -14,7 +14,7 @@ const menuItems = [
           stroke="currentColor"
           strokeWidth="1"
           strokeLinecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
           className="icon icon-tabler icons-tabler-outline icon-tabler-home"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -39,7 +39,7 @@ const menuItems = [
           stroke="currentColor"
           strokeWidth="1"
           strokeLinecap="round"
-          stroke-linejoin="round"
+          strokeLinejoin="round"
           className="icon icon-tabler icons-tabler-outline icon-tabler-numbers"
         >
           <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -83,8 +83,8 @@ const menuItems = [
 export const Sidebar = () => {
   return (
     <>
-      <aside style={{ width: "400px" }} className="min-h-screen">
-        <div style={{ width: "300px" }} className="bg-black z-10 text-slate-300 left-0 fixed h-full">
+      <aside style={{ width: "300px" }} className="min-h-screen">
+        <div style={{ width: "250px" }} className="bg-black z-10 text-slate-300 left-0 fixed h-full">
           <div className="my-4 px-6">
             <h1 className="flex gap-3 text-lg md:text-2xl font-bold text-white">
               <svg
@@ -96,7 +96,7 @@ export const Sidebar = () => {
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
-                stroke-linejoin="round"
+                strokeLinejoin="round"
                 className="icon icon-tabler icons-tabler-outline icon-tabler-brand-nextjs"
               >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
