@@ -1,4 +1,4 @@
-import { CartCounter } from "./components";
+import { CardCounter } from "./components";
 
 export const metadata = {
     title: "Shopping Cart",
@@ -9,7 +9,7 @@ export default function CounterPage() {
     return (
         <div className="w-full h-full flex flex-col items-center justify-center">
             <span>Productos en el Carrito</span>
-            <CartCounter />
+            <CardCounter />
         </div>
     );
 }

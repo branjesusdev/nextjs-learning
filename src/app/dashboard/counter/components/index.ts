@@ -1,1 +1,1 @@
-export { CartCounter } from './CartCounter';
+export { CardCounter  } from './CardCounter';
