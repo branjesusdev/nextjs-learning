@@ -1,19 +1,21 @@
-import { SimplePokemon } from "@/app/common/models/pokemons";
+import { PokemonResponse } from "@/app/common/models/pokemons";
 import { MagicCard } from "@/components";
 
 interface Props {
-  pokemon: SimplePokemon;
+  pokemon: PokemonResponse;
 }
 
 export function PokemonDetail({ pokemon }: Props) {
-  const { id, name } = pokemon;
+  const { id, name, weight, types } = pokemon;
+
+  const bottomRight = types.map((type) => type.type.name).join(", ");
 
   const img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
 
   return (
     <>
-      <div>
-        <MagicCard number={id} img={img} name={name} />
+      <div className="animate-jump-in">
+        <MagicCard number={String(id)} img={img} name={name} leftBottom={String(weight)} bottomRight={bottomRight} />
       </div>
     </>
   );

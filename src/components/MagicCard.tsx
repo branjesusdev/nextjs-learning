@@ -2,16 +2,21 @@ import "atropos/css";
 import Atropos from "atropos/react";
 import Image from "next/image";
 import { BackgroundPattern } from ".";
+import Pokeball from "../../public/pokeball.png";
 
 
 export function MagicCard({
   number,
   img,
   name,
+  leftBottom,
+  bottomRight
 }: {
   number: string;
   img: string;
   name: string;
+  leftBottom?: string;
+  bottomRight?: string;
 }) {
   const color = `rgba(98,255,0,1)`;
   const borderColor = undefined;
@@ -19,7 +24,7 @@ export function MagicCard({
   return (
     <div className="relative z-10 w-full mx-auto aspect-video h-[30rem] flex justify-center items-center">
       <div className="h-full opacity-100 isolate aspect-video">
-        <div className="h-full sm:px-12">
+        <div className="h-full sm:px-12 mt-8">
           <Atropos
             id="ticket"
             className="block w-full h-auto mx-auto aspect-video rounded-2xl bg-transparent"
@@ -38,21 +43,20 @@ export function MagicCard({
                 <div className="absolute top-2 right-2 p-6">
                   <span className="sr-only">Pokeball</span>
 
-                  <div className="relative">
+                  <div className="relative w-16 flex items-center justify-end">
                     <Image
                       width={50}
                       height={50}
                       alt={name}
-                      src={`https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/640px-Pokebola-pokeball-png-0.png`}
+                      src={Pokeball}
                     />
 
-                    <div className="absolute inset-0 opacity-80 contrast-125 blur-2xl animate-pulse">
+                    <div className="absolute inset-0 opacity-80 contrast-125 blur-xl animate-pulse">
                       <Image
                         width={100}
                         height={100}
                         alt={name}
-                        src={`https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Pokebola-pokeball-png-0.png/640px-Pokebola-pokeball-png-0.png`}
-                        className="h-auto w-[100px]"
+                        src={Pokeball}
                       />
                     </div>
                   </div>
@@ -69,7 +73,7 @@ export function MagicCard({
                     )}
 
                     <div className="z-10 mt-1 text-xl leading-6 text-violet-300 text-shadow-xl">
-                      Wather
+                      {bottomRight}
                     </div>
                   </div>
                 </div>
@@ -81,16 +85,12 @@ export function MagicCard({
                 </strong>
               </div>
               <div className="absolute z-50 items-center p-4 overflow-hidden font-mono text-white md:p-6 right-2 bottom-2">
-                <span className="block mb-2 text-xs text-right text-zinc-300">
-                  150 kg
+                <span className="block mb-2 text-sm text-right text-zinc-300">
+                  {leftBottom} kg
                 </span>
-                {/* <CohereLogo className="w-52" /> */}
                 <div className="absolute inset-0 -z-10 blur-sm bg-gradient-radial from-black via-80% via-transparent to-transparent" />
               </div>
 
-              <div className="absolute z-50 items-center p-4 overflow-hidden font-mono text-white md:p-6 left-2 bottom-2">
-                {/* <TwitchLogo className="w-32 opacity-30" /> */}
-              </div>
 
               <div className="absolute bottom-0 z-0 items-center overflow-hidden -right-2 w-96">
                 {img && (

@@ -1,8 +1,8 @@
 "use client";
 
-import { PokemonsResponse, SimplePokemon } from "@/app/common/models/pokemons";
+import { PokemonResponse, PokemonsResponse, SimplePokemon } from "@/app/common/models/pokemons";
 import { PokemonCard, PokemonDetail } from ".";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SpinnerUI } from "@/components";
 
 interface Props {
@@ -26,15 +26,37 @@ const getPokemons = async ({
   return pakemons;
 };
 
+const getPokemon = async (id: string) => {
+  const data: PokemonResponse = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${id}/`,
+    {
+      cache: "force-cache",
+    }
+  ).then((response) => response.json());
+
+  return data;
+};
+
 export function ListPokemons({ pokemonsList, offset }: Props) {
   const [pokemons, setPokemons] = useState<SimplePokemon[]>(pokemonsList);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(offset);
-  const [selectedPokemonId, setSelectedPokemonId] = useState("");
+  const [selectedPokemon, setSelectedPokemon] = useState<PokemonResponse | null>(null)
+  const detailRefCard = useRef<HTMLDivElement>(null);
 
-  const handlePokemonClick = (pokemonId: string) => {
-    console.log("handlePokemonClick", pokemonId);
-    setSelectedPokemonId(pokemonId);
+  const handlePokemonClick = async (pokemonId: string) => {
+    
+    const pokemon = await getPokemon(pokemonId);
+    
+    setSelectedPokemon(pokemon);
+
+    setTimeout(() => {
+      detailRefCard.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 100);
+
   };
 
   const loadPokemons = async () => {
@@ -72,19 +94,20 @@ export function ListPokemons({ pokemonsList, offset }: Props) {
           <div
             key={pokemon.id}
             className={`${
-              selectedPokemonId === pokemon.id ? "w-full" : "w-auto"
+              selectedPokemon?.id == pokemon.id ? "w-full" : "w-auto"
             }`}
           >
-            {selectedPokemonId === pokemon.id && (
-              <div className="w-full mb-4">
+
+            {selectedPokemon?.id == pokemon.id && (
+              <div className="w-full mb-4" ref={detailRefCard}>
                 <PokemonDetail
-                  pokemon={pokemons.find((p) => p.id === selectedPokemonId)}
+                  pokemon={selectedPokemon}
                 />
               </div>
             )}
 
-            {selectedPokemonId !== pokemon.id && (
-              <div className="w-auto mb-4">
+            {selectedPokemon?.id != pokemon.id && (
+              <div className="w-auto mb-4 animate-fade-up">
                 <PokemonCard
                   pokemon={pokemon}
                   handlePokemonClick={handlePokemonClick}

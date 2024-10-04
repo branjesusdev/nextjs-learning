@@ -1,4 +1,13 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h1>Learning NextJS - Fernando Herrera</h1>
+
+## ⚙️ Stack
+
+- [**React-redux**](https://redux-toolkit.js.org)
+- [**Tailwindcss**](https://tailwindcss.com/)
+- [**Atropos**](https://atroposjs.com/)
+- [**eslint**](https://eslint.org/)
+
+This is a [Next.js](https://nextjs.org)
 
 ## Getting Started
 
